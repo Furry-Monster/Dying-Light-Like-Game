@@ -8,10 +8,12 @@ namespace DiasGames.Climbing
     public class Ledge : MonoBehaviour
     {
         [SerializeField] private List<Transform> grabPoints = new List<Transform>();
+
         [Tooltip("Set this parameter to true if you want to allow your character to jump without find another ledge.")]
         [SerializeField] private bool canFreelyJump = false;
         [SerializeField] private bool invisible = false;
         [SerializeField] private bool alwaysKeepRotation = false;
+        
         [Header("Debug")]
         [SerializeField] private Color grabPointColor = Color.magenta;
         [SerializeField] private Color arrowColor = Color.magenta;
@@ -27,6 +29,10 @@ namespace DiasGames.Climbing
             if (invisible)
             {
                 var meshes = GetComponentsInChildren<MeshRenderer>();
+
+                if (meshes.Length == 0)
+                    meshes = GetComponents<MeshRenderer>();
+
                 foreach (var mesh in meshes)
                     mesh.enabled = false;
             }

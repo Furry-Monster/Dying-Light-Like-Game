@@ -1,13 +1,14 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using DiasGames.Abilities;
+using System;
+using UnityEngine;
 
 namespace DiasGames.Combat
 {
     public abstract class AbstractCombat : MonoBehaviour
     {
-        [SerializeField] private AbstractAbility[] AllowedAbilities;
+        [SerializeField]
+        [Tooltip("Priority of the ability, used to determine which ability to run when multiple are available")]
+        private AbstractAbility[] AllowedAbilities;
 
         public bool IsCombatRunning { get; protected set; } = false;
         protected CharacterActions _action = new CharacterActions();
@@ -52,9 +53,9 @@ namespace DiasGames.Combat
 
         public bool IsAbilityAllowed(AbstractAbility abilityToCheck)
         {
-            foreach(AbstractAbility ability in AllowedAbilities)
+            foreach (AbstractAbility ability in AllowedAbilities)
             {
-                if(ability == abilityToCheck)
+                if (ability == abilityToCheck)
                     return true;
             }
 

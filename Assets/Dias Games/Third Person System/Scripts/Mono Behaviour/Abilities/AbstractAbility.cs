@@ -3,12 +3,26 @@ using UnityEngine;
 
 namespace DiasGames.Abilities
 {
+    /// <summary>
+    /// Base class for abilities
+    /// Provides basic method for abilities:
+    ///  - StartAbility()
+    ///  - StopAbility()
+    ///  - UpdateAbility()
+    ///  - SetAnimationState()
+    ///  - HasFinishedAnimation()
+    /// </summary>
     public abstract class AbstractAbility : MonoBehaviour
     {
-        [SerializeField] private int abilityPriority = 0;
+        [SerializeField]
+        [Tooltip("Priority of the ability, used to determine which ability to run when multiple are available")]
+        private int abilityPriority = 0;
 
         public bool IsAbilityRunning { get; private set; }
 
+        //-Ability Observers
+        //  -->AbilityStarted
+        //  -->AbilityStopped
         public event Action<AbstractAbility> abilityStopped = null;
         public event Action<AbstractAbility> abilityStarted = null;
 
@@ -56,6 +70,7 @@ namespace DiasGames.Abilities
             abilityStopped?.Invoke(this);
         }
 
+        //call back function for child class to implement
         public abstract bool ReadyToRun();
 
         public abstract void OnStartAbility();

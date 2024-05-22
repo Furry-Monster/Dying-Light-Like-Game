@@ -30,7 +30,7 @@ namespace DiasGames.Abilities
         private bool _stopUp;
         private bool _climbingUp;
 
-        // parameters to set smooth position and rotation on ladder
+        // parameters to set smooth position and rotation on ladder(used for lerping)
         private Vector3 _startPosition, _targetPosition;
         private Quaternion _startRotation, _targetRotation;
         private float _step;
@@ -49,7 +49,7 @@ namespace DiasGames.Abilities
 
         public override void OnStartAbility()
         {
-            _animator.CrossFadeInFixedTime(climbLadderAnimState, 0.1f);
+            _animator.CrossFadeInFixedTime(climbLadderAnimState, 0.5f);
             _mover.DisableGravity();
 
             // setting position

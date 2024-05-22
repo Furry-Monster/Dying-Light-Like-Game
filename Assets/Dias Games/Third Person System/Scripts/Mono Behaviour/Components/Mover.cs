@@ -106,6 +106,7 @@ namespace DiasGames.Components
 			transform.rotation *= _animator.deltaRotation;
         }
 
+		//assign hash IDs
         private void AssignAnimationIDs()
 		{
 			_animIDSpeed = Animator.StringToHash("Speed");
@@ -123,6 +124,7 @@ namespace DiasGames.Components
             Depenetrate();
         }
 
+		// depenetrate from any objects, including other characters
         private void Depenetrate()
         {
 			if (!_controller.enabled) return;

@@ -189,7 +189,7 @@ namespace DiasGames.Abilities
             {
                 if (_animationStateToWait.Contains("Drop"))
                 {
-                    _mover.SetVelocity(Vector3.down * 3f);
+                    _mover.SetVelocity(Vector3.down * 1.5f);
                 }
 
                 if (_animationStateToWait.Contains("Jump"))
@@ -714,6 +714,10 @@ namespace DiasGames.Abilities
             _targetClimbCharPos.position = GetCharacterPositionOnLedge();
         }
 
+        /// <summary>
+        /// Return whether ledge is attached to a wall that can put legs on it.
+        /// </summary>
+        /// <returns>Whether ledge is attached to a wall that can put legs on it</returns>
         private bool HasWall()
         {
             Vector3 targetPos = _currentHorizontalHit.collider != null && !_isDoingTween ? GetCharacterPositionOnLedge() : transform.position;

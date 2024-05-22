@@ -7,9 +7,11 @@ namespace DiasGames
 {
     public class AbilityScheduler : MonoBehaviour
     {
+        // States for the scheduler(StateMachine)
         private AbstractAbility[] CharAbilities = null;
         private AbstractCombat[] CharCombats = null;
 
+        // Specific States in scheduler
         public AbstractAbility CurrentAbility { get; private set; }
         public AbstractAbility LastAbility { get; private set; }
 
